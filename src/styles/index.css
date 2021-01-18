@@ -1,0 +1,88 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Poppins',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #68EACC;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.note-flexbox-container {
+  display: flex;
+}
+
+.note-flexbox-container input[type="text"] {
+  display: flex;
+  height: 30px;
+  width: 100%;
+  align-items:center;
+  font: unset;
+  border-radius: 5px;
+  padding: unset;
+  margin: 10px 0px 10px 0px;
+  border-style: unset;
+  background-color: #e8d7f3;
+}
+
+.note-flexbox-container li {
+  display: flex;
+  height: 30px;
+  width: 100%;
+  align-items:center;
+  border-radius: 5px;
+  margin: 10px 0px 10px 0px;
+  background-color: #e8d7f3;
+}
+
+.note-flexbox-container input[type="submit"] {
+  width: 50px;
+  margin: 10px 0px 10px -50px;
+  background-color: #eb5143;
+  border-radius: 5px;
+  border-style: unset;
+}
+
+.new-note-container {
+  display: flex;
+}
+
+.new-note-container input[type="text"] {
+  display: flex;
+  height: 30px;
+  width: 100%;
+  align-items:center;
+  font: unset;
+  border-radius: 5px;
+  padding: unset;
+  border-style: unset;
+}
+
+.new-note-container input[type="submit"]{
+  width: 50px;
+  margin-left: -50px;
+  background-color: #94eb43;
+  border-radius: 5px;
+  border-style: unset;
+}
+
+hr {
+  margin-top: 0px;
+}
+
+ul {
+  padding-inline-start: unset;
+}
+
+.wrapper {
+  margin: 120px auto;
+  max-width: 400px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 25px;
+}
