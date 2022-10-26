@@ -1,27 +1,34 @@
-import React, { ChangeEvent } from 'react';
+import React, { useState, FC } from 'react';
 
 interface newNoteInputProps {
-    addNote(note:string): void;
+  addNote(note:string): void;
 }
 
-export const NewNoteInput:React.FC<newNoteInputProps> = ({ addNote }) => {
-    const [note, setNote] = React.useState("");
-    
-    const updateNote = (event:ChangeEvent<HTMLInputElement>) => {
-        setNote(event.target.value);
-    }
+export const NewNoteInput: FC<newNoteInputProps> = ({ addNote }) => {
+  const [note, setNote] = useState('');
 
-    const onAddNoteClick = () => {
-        if (note) {
-            addNote(note);
-            setNote("");
-        }
-    }
+  const updateNote = (event:React.ChangeEvent<HTMLInputElement>) => {
+    setNote(event.target.value);
+  }
 
-    return (
-        <div className="new-note-container">
-            <input onChange={updateNote} value={note} type="text" name="note" placeholder="Note" />
-            <input onClick={onAddNoteClick} value="add" type="submit" />
-        </div>
-    );
+  const onAddNoteClick = () => {
+    if (note) {
+      addNote(note);
+      setNote('');
+    }
+  }
+
+  const onPressEnter = (event:React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      onAddNoteClick();
+    }
+  }
+
+  return (
+    <div className="new-note-container">
+      <input onChange={updateNote} onKeyDown={onPressEnter} value={note} type="text" name="note" placeholder="Note" tabIndex={1} />
+      <input onClick={onAddNoteClick} value="add" type="submit" />
+    </div>
+  );
 }

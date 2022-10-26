@@ -1,33 +1,23 @@
-interface Actions {
-    type: string,
-    payload: any
-}
+import { AnyAction } from '@reduxjs/toolkit'
 
-export interface NotesState {
-    notes: string[]
-};
+const initialState: string[] = [];
 
-const initialState = {
-    notes: []
-}
-
-export const notesReducer = (state:NotesState = initialState, action:Actions ) => {
-    switch(action.type) {
-        case "ADD_NOTE": {
-            return { ...state, notes: [ ...state.notes, action.payload ] }
-        }
-        case "UPDATE_NOTE": {
-            const newNotes = state.notes;
-            newNotes[action.payload.index] = action.payload.note
-            return { ...state, notes: [...newNotes] }
-        }
-        case "DELETE_NOTE": {
-            const newNotes = state.notes;
-            newNotes.splice(action.payload, 1);
-            console.log('newNotes', newNotes);
-            return { ...state, notes: [...newNotes] }
-        }
-        default:
-            return state;
+export const notesReducer = (state: string[] = initialState, action: AnyAction ) => {
+  switch(action.type) {
+    case "ADD_NOTE": {
+      return [ ...state, action.payload ]
     }
+    case "UPDATE_NOTE": {
+      const newNotes = [ ...state ];
+      newNotes[action.payload.index] = action.payload.note;
+      return [...newNotes];
+    }
+    case "DELETE_NOTE": {
+      const newState = [ ...state ];
+      newState.splice(action.payload, 1);
+      return [ ...newState ];
+    }
+    default:
+      return state;
+  }
 } 

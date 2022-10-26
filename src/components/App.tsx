@@ -1,12 +1,12 @@
 import React from 'react';
 import { NewNoteInput } from './NewNoteInput';
 import { useDispatch, useSelector } from 'react-redux';
-import { NotesState } from '../reducers/notesReducer';
+import { ReducerState } from '../containers/store';
 import { addNote } from '../actions/notes';
 import { Note } from './Note';
 
 function App() {
-  const notes = useSelector<NotesState, NotesState["notes"]>((state) => state.notes);
+  const notes = useSelector<ReducerState, ReducerState["notes"]>((state) => state.notes);
   const dispatch = useDispatch();
 
   const onAddNote = (note:string) => {
@@ -19,9 +19,9 @@ function App() {
       <NewNoteInput addNote={onAddNote}/>
       <hr />
       <ul>
-            {notes.map((note, index) => {
-              return <Note note={note} index={index} />
-            })}
+        {notes.map((note, index) => {
+          return <Note note={note} index={index} key={`${index}`}/>
+        })}
       </ul>
     </div>
   );
